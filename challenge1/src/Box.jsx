@@ -1,15 +1,21 @@
 import React from 'react';
 
-export default function Box({ hex }) {
+const Box = ({ hex, isDarkText }) => {
   return (
-    <div>
-      <div className="square" style={{ backgroundColor: hex }}>
-        <p>{hex}</p>
-      </div>
+    <div
+      className="square"
+      style={{
+        backgroundColor: hex,
+        color: isDarkText ? '#000' : '#FFF',
+      }}
+    >
+      <p>{hex ? hex : 'Empty Value'}</p>
     </div>
   );
-}
+};
 
 Box.defaultProps = {
   hex: ' Empty Color Value',
 };
+
+export default Box;

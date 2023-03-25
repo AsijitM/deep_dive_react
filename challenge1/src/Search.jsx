@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Search({ hex, setHex }) {
+export default function Search({ hex,setHex, isDarkText, setIsDarkText }) {
   const handleChange = (e) => {
     setHex(e.target.value);
   };
   return (
-    <form className="search">
+    <form onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="color"> Add Color Name:</label>
       <input
         type="text"
@@ -15,6 +15,9 @@ export default function Search({ hex, setHex }) {
         value={hex}
         onChange={(e) => handleChange(e)}
       />
+      <button type="button" onClick={() => setIsDarkText(!isDarkText)}>
+        Toggle Text Color
+      </button>
     </form>
   );
 }

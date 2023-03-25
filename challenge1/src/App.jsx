@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <div>
-      <Box hex={hex} darkText={isDarkText} />
+      <Box hex={hex} isDarkText={isDarkText} />
       <Search
         hex={hex}
         setHex={setHex}
