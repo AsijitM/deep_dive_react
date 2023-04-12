@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { add } from '../store/cartSlice';
 
 function Products() {
+  const dispatch = useDispatch();
+  //Dispatch will help us to call the function we created in store or Slice
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
@@ -12,6 +16,13 @@ function Products() {
     fetchProducts();
   }, []);
 
+  const handleAdd = (product) => {
+    //product to store in redux store
+    //product == payload
+    //now (action.payload) makes sensse and passing this to the add function;
+    dispatch(add(product));
+  };
+
   return (
     <div className="productsWrapper">
       {products.map((product) => (
@@ -19,7 +30,9 @@ function Products() {
           <img src={product.image} alt={product.title} />
           <h4>{product.title}</h4>
           <h5>{product.price}/-</h5>
-          <button className="btn">Add to Cart</button>
+          <button onClick={() => handleAdd(product)} className="btn">
+            Add to Cart
+          </button>
         </div>
       ))}
     </div>
